@@ -1,9 +1,9 @@
-project: textwrap
+project: kiranprasad/textwrap
 target: textwrap
 image: ghcr.io/kiranprasad/textwrap:latest
 cmds:
- - cmd: /fill_first_fit /
- - cmd: /fill_optimal_fit /
- - cmd: /wrap_first_fit /
- - cmd: /wrap_optimal_fit_usize /
- - cmd: /wrap_optimal_fit /
+  - cmd: /fill_first_fit
+  - cmd: /fill_optimal_fit
+  - cmd: /wrap_first_fit
+  - cmd: /wrap_optimal_fit_usize
+  - cmd: /wrap_optimal_fit
