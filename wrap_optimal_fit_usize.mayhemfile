@@ -1,0 +1,5 @@
+project: textwrap
+target: wrap_optimal_fit_usize
+
+cmds:
+  - cmd: /wrap_optimal_fit_usize

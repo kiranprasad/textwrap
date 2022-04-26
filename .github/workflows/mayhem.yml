@@ -7,6 +7,11 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  WRAP_FIRST_FIT: wrap_first_fit.mayhemfile
+  WRAP_OPTIMAL_FIT: wrap_optimal_fit.mayhemfile
+  WRAP_OPTIMAL_FIT_U: wrap_optimal_fit_usize.mayhemfile
+  FILL_FIRST_FIT: fill_first_fit.mayhemfile
+  FILL_OPTIMAL_FIT: fill_optimal_fit.mayhemfile
 
 jobs:
   build:
@@ -45,11 +50,39 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Start analysis
+      - name: Start analysis for FILL_FIRST_FIT
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }}
+          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.FILL_FIRST_FIT }}
+          sarif-output: sarif
+
+      - name: Start analysis for FILL_OPTIMAL_FIT
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.FILL_OPTIMAL_FIT }}
+          sarif-output: sarif
+
+      - name: Start analysis for WRAP_FIRST_FIT
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.WRAP_FIRST_FIT }}
+          sarif-output: sarif
+
+      - name: Start analysis for WRAP_OPTIMAL_FIT
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.WRAP_OPTIMAL_FIT }}
+          sarif-output: sarif
+      
+      - name: Start analysis for WRAP_OPTIMAL_FIT_U
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.WRAP_OPTIMAL_FIT_U }}
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
