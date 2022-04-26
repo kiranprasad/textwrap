@@ -54,35 +54,35 @@ jobs:
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.FILL_FIRST_FIT }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.FILL_FIRST_FIT }}
           sarif-output: sarif
 
       - name: Start analysis for FILL_OPTIMAL_FIT
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.FILL_OPTIMAL_FIT }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.FILL_OPTIMAL_FIT }}
           sarif-output: sarif
 
       - name: Start analysis for WRAP_FIRST_FIT
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.WRAP_FIRST_FIT }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.WRAP_FIRST_FIT }}
           sarif-output: sarif
 
       - name: Start analysis for WRAP_OPTIMAL_FIT
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.WRAP_OPTIMAL_FIT }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.WRAP_OPTIMAL_FIT }}
           sarif-output: sarif
       
       - name: Start analysis for WRAP_OPTIMAL_FIT_U
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file {{ env.WRAP_OPTIMAL_FIT_U }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.WRAP_OPTIMAL_FIT_U }}
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
